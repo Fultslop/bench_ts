@@ -69,7 +69,7 @@ Tests limited to TypeScript.
 | Model                   | Cost$ | Attempts | Result    | Quality |
 |-------------------------|-------|----------|-----------|---------|
 | Sonnet 4.6              | Sub   | 2        | Succeeded | Perfect |
-| Deepseek 3.2 		        | 0.85  | 3  	  	 | Failed    | - 	     |
+| Deepseek 3.2            | 0.85  | 3        | Failed    | -       |
 | Minimax 2.5  			      | 0.02  | 1 		   | Succeeded | Perfect |
 | Mistral/devstral-2-2512 | 0.16  | 2		     | Succeeded | Good    |	
 | Qwen3 C+	   			      | 0.02  | 1		     | Succeeded | Good    |
@@ -85,13 +85,13 @@ Tests limited to TypeScript.
 
 ### Executing implementation plan (Simplified)
 
-| Model 	   			        | Cost$ | Attempts | Result 	      | Quality |
+| Model                   | Cost$ | Attempts | Result         | Quality |
 |-------------------------|-------|----------|----------------|---------|
-| kimi-k2-thinking	      | ?	    | 2 		   | Hallucination  | -       |
-| nematron free 		      | -     | 1		     | Blocked		    | - 		  |
-| Gemma 4 26B A4B 		    | ?     | 2		     | Not compatible | - 		  |
-| Gemma 4 26B A4B 		    | ?     | 2		     | Not compatible | - 		  |
-| Minimax 2.7 		  	    | 0.30  | 1		     | Succeeded      | Good	  |
+| kimi-k2-thinking        | ?	    | 2        | Hallucination  | -       |
+| nematron free           | -     | 1        | Blocked        | -       |
+| Gemma 4 26B A4B         | ?     | 2        | Not compatible | -       |
+| Minimax 2.7             | 0.30  | 1        | Succeeded      | Good    |
+| GLM 5.1                 | 1.62  | 2        | Succeeded      | Ok      |
 
 ## Notes:
 
@@ -167,6 +167,10 @@ thought
 ```
 
 Then stops. When asked to pivot it forgot what it was doing.
+
+**GLM 5.1**
+Similar to sonnet 4.6, but more expensive than others.
+Review found open, 1 major, 2 minor issues, left a linting errors.
 
 
 ## Models remaining
