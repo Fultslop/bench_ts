@@ -94,6 +94,7 @@ Tests limited to TypeScript.
 | GLM 5.1                 | 1.62  | 2        | Succeeded      | Ok      |
 | Qwen 3.6 Plus           | 0.91  | 1        | Succeeded      | Ok      |
 | DeepSeek v3.2           | 0.38  | 2        | Succeeded      | Ok      |
+| Mimo V2 Flash           | 0.04  | 2        | Died           | -       |
 
 ## Notes:
 
@@ -154,12 +155,12 @@ Claimed "ALL 170 tests PASS!" (Note: project has 200+ tests). Concluded work was
 Claimed success and summarized changes but produced zero code ($0.04 burn). When prompted for the actual code, it "ghosted" with an empty response.
 
 
-**Minimax 2.7**
+**Minimax 2.7**  
 
 Did it in one go for roughly $0.30. Claude did a review and found some minor issues.
 
 
-**Gemma 4 26B A4B**
+**Gemma 4 26B A4B**  
 
 seems to have compatibility issues, eg
 
@@ -170,25 +171,19 @@ thought
 
 Then stops. When asked to pivot it forgot what it was doing.
 
-**GLM 5.1**
+**GLM 5.1**  
 Similar to sonnet 4.6, but more expensive than others.
 Review found open, 1 major, 2 minor issues, left a linting errors.
 
-**Qwen 3.6 plus**
+**Qwen 3.6 plus**  
 Qwen got a rematch... and succeeded this time. 
 3 Moderate issues found.
 
-**Deepseek v3.2**
+**Deepseek v3.2**  
 If Qwen deserved a rematch, so does deepseek. 
 And it worked. It did however introduced a bug, which the reviewer caught and fixed in the second attempt.
 
-## Models remaining
-
-| Model ID (OpenRouter)                  | Est. Cost (In/Out) | Strengths / Notes                     |
-|----------------------------------------|--------------------|---------------------------------------|
-| qwen/qwen-3-coder-32b-instruct         | $0.07 / $0.15      | Successor to the old free Qwen Coder. |
-| deepseek/deepseek-v3.2:nitro           | $0.25 / $0.38      | Unified coder/reasoning (Fast tier).  |
-| zhipuai/glm-4-9b-chat                  | $0.08 / $0.08      | High precision on boilerplate code.   |
-| meta-llama/llama-4-scout-8b            | $0.10 / $0.20      | Massive context, good for long files. |
-| mistralai/mistral-small-3-24b          | $0.10 / $0.10      | Excellent spatial logic for Three.js. |
-| deepseek/deepseek-r1-distill-llama-70b | $0.20 / $0.50      | Best "Thinker" for fixing failed code.|
+**Mimo V2 Flash**  
+38.92
+Fast and ... died in the "tool calling loop bug — the model keeps re-issuing the same read tool call without ever acting on the result. It's either not properly receiving the tool response back, or it's ignoring it and re-planning from scratch each iteration.
+This is a known weakness with smaller/Flash-tier models in agentic scaffolds — they lose track of state between tool calls. The "let me check... let me check... let me check" pattern is the tell."
