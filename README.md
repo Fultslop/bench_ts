@@ -70,18 +70,18 @@ Tests limited to TypeScript.
 |-------------------------|-------|----------|-----------|---------|
 | Sonnet 4.6              | Sub   | 2        | Succeeded | Perfect |
 | Deepseek 3.2            | 0.85  | 3        | Failed    | -       |
-| Minimax 2.5  			      | 0.02  | 1 		   | Succeeded | Perfect |
-| Mistral/devstral-2-2512 | 0.16  | 2		     | Succeeded | Good    |	
-| Qwen3 C+	   			      | 0.02  | 1		     | Succeeded | Good    |
+| Minimax 2.5             | 0.02  | 1        | Succeeded | Perfect |
+| Mistral/devstral-2-2512 | 0.16  | 2        | Succeeded | Good    |	
+| Qwen3 C+                | 0.02  | 1        | Succeeded | Good    |
 
 ### Executing implementation plan
 
-| Model 	   			       | Cost$ | Attempts   | Result 	  	   | Quality |
+| Model                  | Cost$ | Attempts   | Result 	  	   | Quality |
 |------------------------|-------|------------|----------------|---------|
-|CC Sonnet Sub 			     | Sub 	 | 1 		      | Succeeded      | Perfect |
-|Minimax 2.5   			     | 0.12  | 2 		      | Not compatible | -       |
-|Qwen3 C+				         | 1.02  | 2		      | Died		       | - 		   |
-|Qwen3 3.6+				       | ?     | 2		      | Hallucination  | - 		   |
+| CC Sonnet Sub          | Sub   | 1          | Succeeded      | Perfect |
+| Minimax 2.5            | 0.12  | 2          | Not compatible | -       |
+| Qwen3 C+               | 1.02  | 2          | Died           | -       |
+| Qwen3 3.2 Plus         | ?     | 2          | Hallucination  | -       |
 
 ### Executing implementation plan (Simplified)
 
@@ -92,6 +92,7 @@ Tests limited to TypeScript.
 | Gemma 4 26B A4B         | ?     | 2        | Not compatible | -       |
 | Minimax 2.7             | 0.30  | 1        | Succeeded      | Good    |
 | GLM 5.1                 | 1.62  | 2        | Succeeded      | Ok      |
+| Qwen 3.2 Plus           | 0.91  | 1        | Succeeded      | Ok      |
 
 ## Notes:
 
@@ -152,12 +153,12 @@ Claimed "ALL 170 tests PASS!" (Note: project has 200+ tests). Concluded work was
 Claimed success and summarized changes but produced zero code ($0.04 burn). When prompted for the actual code, it "ghosted" with an empty response.
 
 
-** Minimax 2.7 **
+**Minimax 2.7**
 
 Did it in one go for roughly $0.30. Claude did a review and found some minor issues.
 
 
-** Gemma 4 26B A4B **
+**Gemma 4 26B A4B**
 
 seems to have compatibility issues, eg
 
@@ -172,6 +173,9 @@ Then stops. When asked to pivot it forgot what it was doing.
 Similar to sonnet 4.6, but more expensive than others.
 Review found open, 1 major, 2 minor issues, left a linting errors.
 
+**Qwen 3.6 plus**
+Qwen got a rematch... and succeeded this time. 
+3 Moderate issues found.
 
 ## Models remaining
 
