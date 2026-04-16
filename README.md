@@ -93,6 +93,7 @@ Tests limited to TypeScript.
 | Minimax 2.7             | 0.30  | 1        | Succeeded      | Good    |
 | GLM 5.1                 | 1.62  | 2        | Succeeded      | Ok      |
 | Qwen 3.6 Plus           | 0.91  | 1        | Succeeded      | Ok      |
+| DeepSeek v3.2           | 0.38  | 2        | Succeeded      | Ok      |
 
 ## Notes:
 
@@ -176,6 +177,10 @@ Review found open, 1 major, 2 minor issues, left a linting errors.
 **Qwen 3.6 plus**
 Qwen got a rematch... and succeeded this time. 
 3 Moderate issues found.
+
+**Deepseek v3.2**
+If Qwen deserved a rematch, so does deepseek. 
+And it worked. It did however introduced a bug, which the reviewer caught and fixed in the second attempt.
 
 ## Models remaining
 
