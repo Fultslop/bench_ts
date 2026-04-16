@@ -8,7 +8,7 @@ Updated when new information is acquired.
 
 **Quick summary:**
 
-- **Consensus**: There are currently NO affordable, capable agentic models that handle all tests.
+- **Consensus**: There are currently NO affordable, capable agentic models that handle _all_ tests. 
 
 - Most tested models can complete simple, standard projects slightly above "hello-world" level.
 
