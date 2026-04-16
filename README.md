@@ -81,7 +81,7 @@ Tests limited to TypeScript.
 | CC Sonnet Sub          | Sub   | 1          | Succeeded      | Perfect |
 | Minimax 2.5            | 0.12  | 2          | Not compatible | -       |
 | Qwen3 C+               | 1.02  | 2          | Died           | -       |
-| Qwen3 3.2 Plus         | ?     | 2          | Hallucination  | -       |
+| Qwen3 3.6 Plus         | ?     | 2          | Hallucination  | -       |
 
 ### Executing implementation plan (Simplified)
 
@@ -92,7 +92,7 @@ Tests limited to TypeScript.
 | Gemma 4 26B A4B         | ?     | 2        | Not compatible | -       |
 | Minimax 2.7             | 0.30  | 1        | Succeeded      | Good    |
 | GLM 5.1                 | 1.62  | 2        | Succeeded      | Ok      |
-| Qwen 3.2 Plus           | 0.91  | 1        | Succeeded      | Ok      |
+| Qwen 3.6 Plus           | 0.91  | 1        | Succeeded      | Ok      |
 
 ## Notes:
 
