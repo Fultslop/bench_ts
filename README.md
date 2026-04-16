@@ -66,9 +66,9 @@ Tests limited to TypeScript.
 
 ### Hello Threes World
 
-| Model 	   			        | Cost$ | Attempts | Result 	 | Quality |
+| Model                   | Cost$ | Attempts | Result    | Quality |
 |-------------------------|-------|----------|-----------|---------|
-| Sonnet 4.6			        | Sub	  | 2 		   | Succeeded | Perfect |
+| Sonnet 4.6              | Sub   | 2        | Succeeded | Perfect |
 | Deepseek 3.2 		        | 0.85  | 3  	  	 | Failed    | - 	     |
 | Minimax 2.5  			      | 0.02  | 1 		   | Succeeded | Perfect |
 | Mistral/devstral-2-2512 | 0.16  | 2		     | Succeeded | Good    |	
@@ -179,4 +179,3 @@ Then stops. When asked to pivot it forgot what it was doing.
 | meta-llama/llama-4-scout-8b            | $0.10 / $0.20      | Massive context, good for long files. |
 | mistralai/mistral-small-3-24b          | $0.10 / $0.10      | Excellent spatial logic for Three.js. |
 | deepseek/deepseek-r1-distill-llama-70b | $0.20 / $0.50      | Best "Thinker" for fixing failed code.|
-| google/gemma-3-27b-it                  | $0.07 / $0.07      | Strong math/coordinate reasoning.     |
