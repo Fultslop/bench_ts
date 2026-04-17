@@ -85,17 +85,17 @@ Tests limited to TypeScript.
 
 ### Executing implementation plan (Simplified)
 
-| Model                   | Cost$ | Attempts | Result         | Quality |
-|-------------------------|-------|----------|----------------|---------|
-| kimi-k2-thinking        | ?	    | 2        | Hallucination  | -       |
-| nematron free           | -     | 1        | Blocked        | -       |
-| Gemma 4 26B A4B         | ?     | 2        | Not compatible | -       |
-| Minimax 2.7             | 0.30  | 1        | Succeeded      | Good    |
-| GLM 5.1                 | 1.62  | 2        | Succeeded      | Ok      |
-| Qwen 3.6 Plus           | 0.91  | 1        | Succeeded      | Ok      |
-| DeepSeek v3.2           | 0.38  | 2        | Succeeded      | Ok      |
-| Mimo V2 Flash           | 0.04  | 2        | Died           | -       |
-| Mistral/devstral-2-2512 | 0.95  | 1        | Spiraledied    | -       |	
+| Model                   | Cost$ | Attempts | Result                 | Quality |
+|-------------------------|-------|----------|------------------------|---------|
+| kimi-k2-thinking        | ?	    | 2        | Hallucination          | -       |
+| nematron free           | -     | 1        | Blocked                | -       |
+| Gemma 4 26B A4B         | ?     | 2        | Not compatible         | -       |
+| Minimax 2.7             | 0.30  | 1        | Succeeded 1 / Fail 1 ? | Good    |
+| GLM 5.1                 | 1.62  | 2        | Succeeded              | Ok      |
+| Qwen 3.6 Plus           | 0.91  | 1        | Succeeded              | Ok      |
+| DeepSeek v3.2           | 0.38  | 2        | Succeeded              | Ok      |
+| Mimo V2 Flash           | 0.04  | 2        | Died                   | -       |
+| Mistral/devstral-2-2512 | 0.95  | 1        | Spiraledied            | -       |	
 
 ## Notes:
 
@@ -127,7 +127,7 @@ Worked but the pointlight was not visible on the sphere even after retrying.
 
 Slow
 
-Compatibility issues "Invoked: <invoke name="run_Tests"> <parameter name="files">["c:\\Users\\lassc\\Code\\typescript\\fsprepost\\test\\transformer.test.ts"]</parameter> <parameter name="mode">run</parameter> </invoke> </minimax:tool_call>"
+Compatibility issues "Invoked: <invoke name="run_Tests"> <parameter name="files"...</parameter> <parameter name="mode">run</parameter> </invoke> </minimax:tool_call>"
 
 Seems to indicate it is not compatible with standard setup. 
 2nd attempt, added "Execute plan 'docs\superpowers\plans\2026-04-13-release-contracts.md'. If you need to call a tool, use only the standard JSON format expected by the Microsoft Agent Toolkit."
@@ -158,8 +158,14 @@ Claimed success and summarized changes but produced zero code ($0.04 burn). When
 
 **Minimax 2.7**  
 
-Did it in one go for roughly $0.30. Claude did a review and found some minor issues.
+1st plan: Did it in one go for roughly $0.30. Claude did a review and found some minor issues.1st 
+2nd plan: Failed due repeated errors. Unclear why. 
 
+"Sorry, your request failed. Please try again.
+
+Copilot Request id: f0807f17-2519-48b9-b5d7-5b93b342493d
+
+Reason: Response contained no choices.: Error: Response contained no choices..."
 
 **Gemma 4 26B A4B**  
 
