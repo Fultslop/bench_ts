@@ -97,6 +97,7 @@ Tests limited to TypeScript.
 | GLM 5.1 (task 2)        | 0.92  | 2        | Succeeded              | Ok       |
 | Qwen 3.6 Plus (task 1)  | 0.91  | 1        | Succeeded              | Ok       |
 | Qwen 3.6 Plus (task 2)  | 0.55  | 2        | Succeeded              | Meh      |
+| Qwen 3.6 Plus (task 3)  | 0.43  | 1        | Succeeded              | Perfect  |
 | DeepSeek v3.2 (task 1)  | 0.38  | 2        | Succeeded              | Ok       |
 | DeepSeek v3.2 (task 2)  | 0.28  | 2        | Failed                 | -        |
 | Mimo V2 Flash           | 0.04  | 2        | Died                   | -        |
@@ -242,6 +243,9 @@ Second attempt it failed because it started doing unwanted activities:
 shouldSkipRewriteOrFilter is an unrequested refactor — function-rewriter.ts:488-498
 
 The original inline if (shouldSkipRewrite(...) || allContractsFiltered(...)) was not part of the task scope. CLAUDE.md explicitly states: "Don't add features, refactor code, or make 'improvements' beyond what was asked." This extracts a single-callsite helper with no functional benefit. Revert function-rewriter.ts:488-498 and restore the original inline condition at function-rewriter.ts:578.
+
+_Task 3_
+No Notes
 
 **Deepseek v3.2**  
 _Task 1_
