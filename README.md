@@ -100,6 +100,7 @@ Tests limited to TypeScript.
 | Qwen 3.6 Plus (task 3)  | 0.43  | 1        | Succeeded              | Perfect  |
 | DeepSeek v3.2 (task 1)  | 0.38  | 2        | Succeeded              | Ok       |
 | DeepSeek v3.2 (task 2)  | 0.28  | 2        | Failed                 | -        |
+| DeepSeek v3.2 (task 3)  | 0.39  | 2        | Succeeded              | Perfect  |
 | Mimo V2 Flash           | 0.04  | 2        | Died                   | -        |
 | Mistral/devstral-2-2512 | 0.95  | 1        | Spiraledied            | -        |	
 
@@ -255,6 +256,9 @@ And it worked. It did however introduced a bug, which the reviewer caught and fi
 _Task 2_
 This one it almost completed but failed to nail the landing. For some reason it wasn't able to run tests anymore or run linter. 
 
+_Task 3_
+0.39
+All done no notes
 
 **Mimo V2 Flash**  
 38.92
