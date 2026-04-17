@@ -93,7 +93,8 @@ Tests limited to TypeScript.
 | Minimax 2.7 (task 1)    | 0.30  | 1        | Succeeded              | Good     |
 | Minimax 2.7 (task 2)    |       | 3        | Failed                 | -        |
 | Minimax 2.7 (task 3)    | 0.32  | 1        | Succeeded              | Ok       |
-| GLM 5.1                 | 1.62  | 2        | Succeeded              | Ok       |
+| GLM 5.1 (task 1)        | 1.62  | 2        | Succeeded              | Ok       |
+| GLM 5.1 (task 2)        | 0.92  | 2        | Succeeded              | Ok       |
 | Qwen 3.6 Plus (task 1)  | 0.91  | 1        | Succeeded              | Ok       |
 | Qwen 3.6 Plus (task 2)  | 0.55  | 2        | Succeeded              | Meh      |
 | DeepSeek v3.2 (task 1)  | 0.38  | 2        | Succeeded              | Ok       |
@@ -227,7 +228,8 @@ Similar to sonnet 4.6, but more expensive than others.
 Review found open, 1 major, 2 minor issues, left a linting errors.
 
 _Task 2_
-34.90
+0.92
+2 attempts code: ok
 
 **Qwen 3.6 plus**  
 _Task 1_
