@@ -102,6 +102,15 @@ Tests limited to TypeScript.
 | Mimo V2 Flash           | 0.04  | 2        | Died                   | -        |
 | Mistral/devstral-2-2512 | 0.95  | 1        | Spiraledied            | -        |	
 
+### Reviews
+
+| Model                   | Cost$ | Attempts | Result                 | Quality  |
+|-------------------------|-------|----------|------------------------|----------|
+| GLM 5.1                 | 0.31	 | 1        | Succeeded              | Perfect  |
+| DeepSeek v3.2           | 0.51	 | 1        | Succeeded              | Good     |
+| Mimo V2 Flash           | $0.04 | 1        | Succeeded              | Ok       |
+| Gemini 3.1 Pro          | $0.63 | 1        | Succeeded              | Meh      |
+
 ## Notes:
 
 ### Hello Threes World
@@ -197,6 +206,9 @@ OpenRouter sometimes sends a final metadata packet that contains token usage but
 
 As of this month, MiniMax has surged to become one of the top 3 most-used models on OpenRouter. When the primary provider for MiniMax hits a rate limit, OpenRouter attempts to route to a fallback. If that fallback is a "Free" or "Preview" tier, it may reject the complex tool-calling parameters Copilot sends, resulting in a null response.
 
+_Task 3_
+35.22
+
 **Gemma 4 26B A4B**  
 
 seems to have compatibility issues, eg
@@ -214,11 +226,11 @@ Similar to sonnet 4.6, but more expensive than others.
 Review found open, 1 major, 2 minor issues, left a linting errors.
 
 **Qwen 3.6 plus**  
-Task 1
+_Task 1_
 Qwen got a rematch... and succeeded this time. 
 3 Moderate issues found.
 
-Task 2
+_Task 2_
 Second attempt it failed because it started doing unwanted activities:
 
 shouldSkipRewriteOrFilter is an unrequested refactor — function-rewriter.ts:488-498
@@ -232,6 +244,7 @@ And it worked. It did however introduced a bug, which the reviewer caught and fi
 
 _Task 2_
 This one it almost completed but failed to nail the landing. For some reason it wasn't able to run tests anymore or run linter. 
+
 
 **Mimo V2 Flash**  
 38.92
