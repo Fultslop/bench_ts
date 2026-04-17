@@ -95,6 +95,7 @@ Tests limited to TypeScript.
 | Qwen 3.6 Plus           | 0.91  | 1        | Succeeded      | Ok      |
 | DeepSeek v3.2           | 0.38  | 2        | Succeeded      | Ok      |
 | Mimo V2 Flash           | 0.04  | 2        | Died           | -       |
+| Mistral/devstral-2-2512 | 0.95  | 1        | Spiraledied    | -       |	
 
 ## Notes:
 
