@@ -95,6 +95,7 @@ Tests limited to TypeScript.
 | Minimax 2.7 (task 3)    | 0.32  | 1        | Succeeded              | Ok       |
 | GLM 5.1 (task 1)        | 1.62  | 2        | Succeeded              | Ok       |
 | GLM 5.1 (task 2)        | 0.92  | 2        | Succeeded              | Ok       |
+| GLM 5.1 (task 3)        | 0.37  | 1        | Succeeded              | Perfect  |
 | Qwen 3.6 Plus (task 1)  | 0.91  | 1        | Succeeded              | Ok       |
 | Qwen 3.6 Plus (task 2)  | 0.55  | 2        | Succeeded              | Meh      |
 | Qwen 3.6 Plus (task 3)  | 0.43  | 1        | Succeeded              | Perfect  |
@@ -230,8 +231,11 @@ Similar to sonnet 4.6, but more expensive than others.
 Review found open, 1 major, 2 minor issues, left a linting errors.
 
 _Task 2_
-0.92
-2 attempts code: ok
+2 attempts followed by a discussion which was interesting.
+
+_Task 3_
+All passed
+
 
 **Qwen 3.6 plus**  
 _Task 1_
@@ -257,7 +261,6 @@ _Task 2_
 This one it almost completed but failed to nail the landing. For some reason it wasn't able to run tests anymore or run linter. 
 
 _Task 3_
-0.39
 All done no notes
 
 **Mimo V2 Flash**  
