@@ -161,7 +161,7 @@ Claimed success and summarized changes but produced zero code ($0.04 burn). When
 1st plan: Did it in one go for roughly $0.30. Claude did a review and found some minor issues.1st 
 2nd plan: Failed due repeated errors. Unclear why. 
 
-``bash
+```bash
 "Sorry, your request failed. Please try again.
 
 Copilot Request id: f0807f17-2519-48b9-b5d7-5b93b342493d
