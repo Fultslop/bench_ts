@@ -161,11 +161,33 @@ Claimed success and summarized changes but produced zero code ($0.04 burn). When
 1st plan: Did it in one go for roughly $0.30. Claude did a review and found some minor issues.1st 
 2nd plan: Failed due repeated errors. Unclear why. 
 
+``bash
 "Sorry, your request failed. Please try again.
 
 Copilot Request id: f0807f17-2519-48b9-b5d7-5b93b342493d
 
 Reason: Response contained no choices.: Error: Response contained no choices..."
+```
+
+Possible explanations:
+
+1. Token Limit Confusion (The MiniMax "Blank" Response)
+
+Recent reports (as of April 2026) suggest an issue with how context limits are negotiated for MiniMax-M2.7.
+
+    The Bug: If the agent or your configuration manually overrides the "Maximum context tokens" (e.g., trying to use the full 200k window), MiniMax occasionally returns a blank choice object instead of an error.
+
+    The Result: Copilot sees a successful HTTP 200 response but an empty choices array, leading to the exact error message you received.
+
+2. "Usage-Only" Stream Events
+
+OpenRouter sometimes sends a final metadata packet that contains token usage but no text choices.
+
+    Some versions of the Copilot extension (and other "BYOK" tools) don't handle these empty packets gracefully. They interpret the lack of a "choice" in that specific packet as a failure of the entire request, even if the text was already streaming in.
+
+3. High-Traffic Failover
+
+As of this month, MiniMax has surged to become one of the top 3 most-used models on OpenRouter. When the primary provider for MiniMax hits a rate limit, OpenRouter attempts to route to a fallback. If that fallback is a "Free" or "Preview" tier, it may reject the complex tool-calling parameters Copilot sends, resulting in a null response.
 
 **Gemma 4 26B A4B**  
 
