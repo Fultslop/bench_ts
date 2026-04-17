@@ -57,9 +57,11 @@ Tests limited to TypeScript.
 
 * `Hello Threes World`, prompt: "Create a simple typescript project, create a landing page with a red 3d sphere, warm ambient light and single point light using three.js in a canvas and a text, rendered in a div centered at the bottom, overlaying the canvas saying "hello world!". Make sure the canvas takes the entire client space and updates with resizing."
 
-* `Executing implementation plan in an existing repro`: prompt "Execute plan 'docs\superpowers\plans\2026-04-13-release-contracts.md' If you need to call a tool, use only the standard JSON format expected by the Microsoft Agent Toolkit. When reading or analyzing files, do not provide status updates or phrases like 'Let me continue reading' between tool calls. Execute all necessary reads silently. Only provide a summary once the final objective is met."
+* `Executing implementation plan in an existing repro`: prompt "Execute plan 'docs\superpowers\plans\plan_x.md' If you need to call a tool, use only the standard JSON format expected by the Microsoft Agent Toolkit. When reading or analyzing files, do not provide status updates or phrases like 'Let me continue reading' between tool calls. Execute all necessary reads silently. Only provide a summary once the final objective is met."
 
-* `Executing siplified plan in an existing repro`: "Execute plan 'docs\superpowers\plans\2026-04-15-keepcontracts-step1-function-rewriter.md' If you need to call a tool, use only the standard JSON format expected by the Microsoft Agent Toolkit." 
+* `Executing siplified plan in an existing repro`: "Execute plan 'docs\superpowers\plans\plan_x.md' If you need to call a tool, use only the standard JSON format expected by the Microsoft Agent Toolkit." 
+
+* Review a completed plan: Plan X has been completed. Review (see prompt details for more information)
 
 
 ## "Leaderboards" 
@@ -235,3 +237,39 @@ This one it almost completed but failed to nail the landing. For some reason it 
 38.92
 Fast and ... died in the "tool calling loop bug — the model keeps re-issuing the same read tool call without ever acting on the result. It's either not properly receiving the tool response back, or it's ignoring it and re-planning from scratch each iteration.
 This is a known weakness with smaller/Flash-tier models in agentic scaffolds — they lose track of state between tool calls. The "let me check... let me check... let me check" pattern is the tell."
+
+
+## Prompt details
+
+### Review
+
+```md
+# Agent Instructions: Implementation Audit
+
+**Objective:** Conduct a comprehensive audit of the implementation based on the requirements defined in `<Plan File.md>`. You must determine if the execution satisfies both technical verification and functional validation.
+
+---
+
+### 1. Verification (Process Integrity)
+Confirm that the implementation was built correctly according to the technical specifications in `<Plan File.md>`:
+
+* **Syntax & Standards:** Compare the code directly against the technical patterns defined in the plan. Does the code adhere to the specified syntax, naming conventions, and architectural constraints?
+* **Logic Accuracy:** Trace the logic flow of the new implementation. Does it execute the discrete steps outlined in the `<Plan Objective>`?
+* **Constraint Adherence:** Identify any "forbidden" patterns or technical debt items mentioned in the plan and ensure they are absent from the implementation.
+* **Test Coverage:** Verify that unit and integration tests have been updated to cover the new logic paths introduced by the plan.
+
+### 2. Validation (Outcome Alignment)
+Confirm that the implementation achieves the intended goals of the `<Plan Objective>`:
+
+* **Functional Goal:** Does the software now perform the specific tasks or solve the problems intended by the plan?
+* **System Impact:** Evaluate how the changes interact with existing modules. Does the implementation maintain the integrity of the broader system as required?
+* **Performance & Efficiency:** Assess whether the implementation meets any performance benchmarks or efficiency improvements cited in the requirements.
+* **Usability:** If applicable, determine if the resulting interface or API surface aligns with the intended developer or end-user experience.
+
+---
+
+### 3. Reporting Requirements
+Provide a concise report based on your findings:
+
+1.  **Requirement Traceability Matrix:** A list of requirements from `<Plan File.md>` marked as **Met**, **Partially Met**, or **Not
+```
