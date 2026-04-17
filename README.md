@@ -95,10 +95,10 @@ Tests limited to TypeScript.
 | Minimax 2.7 (task 1)    | 0.30  | 1        | Succeeded              | Good     |
 | Minimax 2.7 (task 2)    |       | 3        | Failed                 | -        |
 | GLM 5.1                 | 1.62  | 2        | Succeeded              | Ok       |
-| Qwen 3.6 Plus (task1)   | 0.91  | 1        | Succeeded              | Ok       |
-| Qwen 3.6 Plus (task2)   | 0.55  | 2        | Succeeded              | Meh      |
-| DeepSeek v3.2 (task1)   | 0.38  | 2        | Succeeded              | Ok       |
-| DeepSeek v3.2 (tasl2)   | 0.28  | 2        | Failed                 | -        |
+| Qwen 3.6 Plus (task 1)  | 0.91  | 1        | Succeeded              | Ok       |
+| Qwen 3.6 Plus (task 2)  | 0.55  | 2        | Succeeded              | Meh      |
+| DeepSeek v3.2 (task 1)  | 0.38  | 2        | Succeeded              | Ok       |
+| DeepSeek v3.2 (task 2)  | 0.28  | 2        | Failed                 | -        |
 | Mimo V2 Flash           | 0.04  | 2        | Died                   | -        |
 | Mistral/devstral-2-2512 | 0.95  | 1        | Spiraledied            | -        |	
 
@@ -108,8 +108,8 @@ Tests limited to TypeScript.
 |-------------------------|-------|----------|------------------------|----------|
 | GLM 5.1                 | 0.31	 | 1        | Succeeded              | Perfect  |
 | DeepSeek v3.2           | 0.51	 | 1        | Succeeded              | Good     |
-| Mimo V2 Flash           | $0.04 | 1        | Succeeded              | Ok       |
-| Gemini 3.1 Pro          | $0.63 | 1        | Succeeded              | Meh      |
+| Mimo V2 Flash           | 0.04  | 1        | Succeeded              | Ok       |
+| Gemini 3.1 Pro          | 0.63  | 1        | Succeeded              | Meh      |
 
 ## Notes:
 
