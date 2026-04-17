@@ -8,7 +8,7 @@ Updated when new information is acquired.
 
 **Quick summary:**
 
-- **Consensus**: There are currently NO affordable, capable agentic models that handle _all_ tests. 
+- **Consensus**: There are currently NO affordable, capable agentic models that handle _all_ tests on a 'good' or better level. 
 
 - Most tested models can complete simple, standard projects slightly above "hello-world" level.
 
@@ -45,7 +45,7 @@ Tests limited to TypeScript.
 
     * Ok: Several notes.
 
-    * Mediocre: Significant notes.
+    * Mediocre / Meh: Significant notes.
 
     * Bad: Extensive notes; more than worth writing.
 
@@ -85,17 +85,20 @@ Tests limited to TypeScript.
 
 ### Executing implementation plan (Simplified)
 
-| Model                   | Cost$ | Attempts | Result                 | Quality |
-|-------------------------|-------|----------|------------------------|---------|
-| kimi-k2-thinking        | ?	    | 2        | Hallucination          | -       |
-| nematron free           | -     | 1        | Blocked                | -       |
-| Gemma 4 26B A4B         | ?     | 2        | Not compatible         | -       |
-| Minimax 2.7             | 0.30  | 1        | Succeeded 1 / Fail 1 ? | Good    |
-| GLM 5.1                 | 1.62  | 2        | Succeeded              | Ok      |
-| Qwen 3.6 Plus           | 0.91  | 1        | Succeeded              | Ok      |
-| DeepSeek v3.2           | 0.38  | 2        | Succeeded              | Ok      |
-| Mimo V2 Flash           | 0.04  | 2        | Died                   | -       |
-| Mistral/devstral-2-2512 | 0.95  | 1        | Spiraledied            | -       |	
+| Model                   | Cost$ | Attempts | Result                 | Quality  |
+|-------------------------|-------|----------|------------------------|----------|
+| kimi-k2-thinking        | ?	    | 2        | Hallucination          | -        |
+| nematron free           | -     | 1        | Blocked                | -        |
+| Gemma 4 26B A4B         | ?     | 2        | Not compatible         | -        |
+| Minimax 2.7 (task 1)    | 0.30  | 1        | Succeeded              | Good     |
+| Minimax 2.7 (task 2)    |       | 3        | Failed                 | -        |
+| GLM 5.1                 | 1.62  | 2        | Succeeded              | Ok       |
+| Qwen 3.6 Plus (task1)   | 0.91  | 1        | Succeeded              | Ok       |
+| Qwen 3.6 Plus (task2)   | 0.55  | 2        | Succeeded              | Meh      |
+| DeepSeek v3.2 (task1)   | 0.38  | 2        | Succeeded              | Ok       |
+| DeepSeek v3.2 (tasl2)   | 0.28  | 2        | Failed                 | -        |
+| Mimo V2 Flash           | 0.04  | 2        | Died                   | -        |
+| Mistral/devstral-2-2512 | 0.95  | 1        | Spiraledied            | -        |	
 
 ## Notes:
 
@@ -158,8 +161,11 @@ Claimed success and summarized changes but produced zero code ($0.04 burn). When
 
 **Minimax 2.7**  
 
-1st plan: Did it in one go for roughly $0.30. Claude did a review and found some minor issues.1st 
-2nd plan: Failed due repeated errors. Unclear why. 
+_Task 1_  
+Did it in one go for roughly $0.30. Claude did a review and found some minor issues.1st 
+
+_Task 2_   
+Failed due repeated errors. Unclear why. 
 
 ```bash
 "Sorry, your request failed. Please try again.
@@ -198,19 +204,32 @@ thought
 <channel|>
 ```
 
-Then stops. When asked to pivot it forgot what it was doing.
+Then stops. When asked to pivot it forgot what it was doing. 
+Retry later with LiteLLM
 
 **GLM 5.1**  
 Similar to sonnet 4.6, but more expensive than others.
 Review found open, 1 major, 2 minor issues, left a linting errors.
 
 **Qwen 3.6 plus**  
+Task 1
 Qwen got a rematch... and succeeded this time. 
 3 Moderate issues found.
 
+Task 2
+Second attempt it failed because it started doing unwanted activities:
+
+shouldSkipRewriteOrFilter is an unrequested refactor — function-rewriter.ts:488-498
+
+The original inline if (shouldSkipRewrite(...) || allContractsFiltered(...)) was not part of the task scope. CLAUDE.md explicitly states: "Don't add features, refactor code, or make 'improvements' beyond what was asked." This extracts a single-callsite helper with no functional benefit. Revert function-rewriter.ts:488-498 and restore the original inline condition at function-rewriter.ts:578.
+
 **Deepseek v3.2**  
+_Task 1_
 If Qwen deserved a rematch, so does deepseek. 
 And it worked. It did however introduced a bug, which the reviewer caught and fixed in the second attempt.
+
+_Task 2_
+This one it almost completed but failed to nail the landing. For some reason it wasn't able to run tests anymore or run linter. 
 
 **Mimo V2 Flash**  
 38.92
