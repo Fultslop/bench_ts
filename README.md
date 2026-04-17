@@ -8,7 +8,7 @@ Updated when new information is acquired. Test details not disclosed to fully le
 
 **Quick summary:**
 
-- **Consensus**: There are currently NO affordable, capable agentic models that handle _all_ tests on a 'good' or better level. Note: paying less than one openrouter dollar is considered affordable, everything else for the upper class elite. 
+- **Consensus**: There are currently NO affordable, capable agentic models that handle _all_ tests on a 'good' or better level. Note: paying less than one openrouter dollar is considered affordable, everything else for the upper class elite slop.
 
 - Most tested models can complete simple, standard projects slightly above "hello-world" level and are decent at reviews.
 
