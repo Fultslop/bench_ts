@@ -4,15 +4,13 @@ _"Definitely not 13337 Code Challenges for agents."_
 
 Simple benchmark; not stretching any limits or reaching "PhD" level stuff. Just measuring what your hard-earned currency gets you for contrived and real-world examples. Finding the breaking point of models while optimizing for affordability and capacity.
 
-Updated when new information is acquired.
+Updated when new information is acquired. Test details not disclosed to fully leverage the 'trust-me-bro' dimension.
 
 **Quick summary:**
 
-- **Consensus**: There are currently NO affordable, capable agentic models that handle _all_ tests on a 'good' or better level. 
+- **Consensus**: There are currently NO affordable, capable agentic models that handle _all_ tests on a 'good' or better level. Note: paying less than one openrouter dollar is considered affordable, everything else for the upper class elite. 
 
-- Most tested models can complete simple, standard projects slightly above "hello-world" level.
-
-- Surprisingly, Deepseek 3.2—touted as a cost-effective alternative to Sonnet 4.6—was unable to provide a working solution.
+- Most tested models can complete simple, standard projects slightly above "hello-world" level and are decent at reviews.
 
 - NONE of the tested models were both compatible with GitHub AND capable of handling multi-step, multi-document reasoning/implementation/self-validation (MDRIS) based on a structured instruction document.
 
@@ -20,7 +18,7 @@ Updated when new information is acquired.
 
 - OpenRouter appears to block free models.
 
-- This benchmark makes no claim to be scientific, reproducible, or universally applicable.
+- This benchmark makes no claim to be scientific, reproducible, or universally applicable. At best this bench an indicator where these models stand in terms of development capabilities.
 
 ## Setup
 
@@ -94,6 +92,7 @@ Tests limited to TypeScript.
 | Gemma 4 26B A4B         | ?     | 2        | Not compatible         | -        |
 | Minimax 2.7 (task 1)    | 0.30  | 1        | Succeeded              | Good     |
 | Minimax 2.7 (task 2)    |       | 3        | Failed                 | -        |
+| Minimax 2.7 (task 3)    | 0.32  | 1        | Succeeded              | Ok       |
 | GLM 5.1                 | 1.62  | 2        | Succeeded              | Ok       |
 | Qwen 3.6 Plus (task 1)  | 0.91  | 1        | Succeeded              | Ok       |
 | Qwen 3.6 Plus (task 2)  | 0.55  | 2        | Succeeded              | Meh      |
@@ -207,7 +206,8 @@ OpenRouter sometimes sends a final metadata packet that contains token usage but
 As of this month, MiniMax has surged to become one of the top 3 most-used models on OpenRouter. When the primary provider for MiniMax hits a rate limit, OpenRouter attempts to route to a fallback. If that fallback is a "Free" or "Preview" tier, it may reject the complex tool-calling parameters Copilot sends, resulting in a null response.
 
 _Task 3_
-35.22
+0.32
+No problems this time, possible because it gets used less now. Worked fine, minor comments from the review
 
 **Gemma 4 26B A4B**  
 
@@ -222,8 +222,12 @@ Then stops. When asked to pivot it forgot what it was doing.
 Retry later with LiteLLM
 
 **GLM 5.1**  
+_Task 1_
 Similar to sonnet 4.6, but more expensive than others.
 Review found open, 1 major, 2 minor issues, left a linting errors.
+
+_Task 2_
+34.90
 
 **Qwen 3.6 plus**  
 _Task 1_
