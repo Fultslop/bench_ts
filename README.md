@@ -59,7 +59,9 @@ Tests limited to TypeScript.
 
 * `Executing siplified plan in an existing repro`: "Execute plan 'docs\superpowers\plans\plan_x.md' If you need to call a tool, use only the standard JSON format expected by the Microsoft Agent Toolkit." 
 
-* Review a completed plan: Plan X has been completed. Review (see prompt details for more information)
+* Review a completed plan: Plan X has been completed. See prompt details for more information.
+
+* Running acceptance tests in a complex setup. See prompt details for more information.
 
 
 ## "Leaderboards" 
@@ -113,6 +115,14 @@ Tests limited to TypeScript.
 | DeepSeek v3.2           | 0.51	 | 1        | Succeeded              | Good     |
 | Mimo V2 Flash           | 0.04  | 1        | Succeeded              | Ok       |
 | Gemini 3.1 Pro          | 0.63  | 1        | Succeeded              | Meh      |
+
+
+### Acceptance testing
+
+| Model                   | Cost$ | Attempts | Result                 | Quality  |
+|-------------------------|-------|----------|------------------------|----------|
+| Qwen 3.6 Plus (task 1)  | 1.76  | 3        | Failed                 | -        |
+
 
 ## Notes:
 
@@ -264,10 +274,16 @@ _Task 3_
 All done no notes
 
 **Mimo V2 Flash**  
-38.92
 Fast and ... died in the "tool calling loop bug — the model keeps re-issuing the same read tool call without ever acting on the result. It's either not properly receiving the tool response back, or it's ignoring it and re-planning from scratch each iteration.
 This is a known weakness with smaller/Flash-tier models in agentic scaffolds — they lose track of state between tool calls. The "let me check... let me check... let me check" pattern is the tell."
 
+## Acceptance testing
+
+### Qwen 3.6 Plus
+
+Qwen remains a bit of a question mark. In this case it found blocking issues in the test framework and instead of reporting on it, after it was asked, it tried weird work-arounds that ... didn't work. After that it seemed dead-set on fixing the borked workarounds. At this point I canceled its process and handed the fix over to Calude. After Claude fixed the underlying issue, Qwen seemed to be unblocked. It then ran face first into a regression which it tried to understand and instead of looking at the core problem ... it went for a work-around. 
+
+It all points to the conclusion that Qwen 3.6 is capable of dealing with well scoped, small tasks, but gets easily lost in complex multi-document, problem solving and design. 
 
 ## Prompt details
 
@@ -276,7 +292,7 @@ This is a known weakness with smaller/Flash-tier models in agentic scaffolds —
 ```md
 # Agent Instructions: Implementation Audit
 
-**Objective:** Conduct a comprehensive audit of the implementation based on the requirements defined in `<Plan File.md>`. You must determine if the execution satisfies both technical verification and functional validation.
+**Objective:** Conduct a comprehensive audit of the implementation based on the requirements defined in `<Plan File.md>`. You must determine if the execution satisfies both technical verification and functional validation. 
 
 ---
 
@@ -303,3 +319,60 @@ Provide a concise report based on your findings:
 
 1.  **Requirement Traceability Matrix:** A list of requirements from `<Plan File.md>` marked as **Met**, **Partially Met**, or **Not
 ```
+
+### Acceptance testing
+
+```md
+
+**Role:** You are a Senior QA Engineer specializing in TypeScript compiler transformers.
+**Objective:** Perform an acceptance test for `@fultslop/axiom@0.9.0-alpha.10`. Your goal is to identify gaps where the implementation might not meet the functional specification.
+
+---
+
+### 1. The Task
+Review the **Functional Specification** (Section 2) against the **Project Context** (Section 3). 
+1. **Analyze for Scope Gaps:** Identify features defined in the spec that might fail or are missing edge-case coverage.
+2. **Create a Test Plan:** Generate a list of specific test cases (Input code vs. Expected JS output).
+3. **Flag Ambiguities:** Ask for clarification if the interaction between features (e.g., Async + Arrow Functions) is unclear.
+
+---
+
+### 2. Functional Specification (New Features to Test)
+The focus of this version is **Arrow Functions, Function Expressions, Async support, and the `keepContracts` flag.**
+
+#### **A. Arrow & Function Expressions**
+* **Target:** Must be an *exported* `const`. 
+* **Body Normalization:** Expression-body arrows (e.g., `x => x * 2`) must be converted to block-bodies (e.g., `{ return x * 2; }`) to allow `result` capture.
+* **Naming:** The location string in the error must be the **variable name** (e.g., `export const foo = ...` → location is `"foo"`), even for named function expressions.
+* **Exclusions:** Non-exported arrows and class-field arrows (`prop = () => {}`) are **OUT OF SCOPE** (no injection, no warning).
+
+#### **B. Async Functions**
+* **Pre-conditions:** Must run **synchronously** before the async body.
+* **Post-conditions:** Must check the **resolved value** (the `T` in `Promise<T>`), not the Promise object itself.
+* **Void Check:** `Promise<void>` must drop `@post` tags with a warning (no `result` to check).
+
+#### **C. `keepContracts` Logic**
+* **Options:** `true` | `'all'` | `'pre'` | `'post'` | `'invariant'`.
+* **File-level Override:** `// @axiom keepContracts [type]` on **Line 1** overrides global settings. If on Line 2+, it must be ignored.
+* **Require Injection:** When any `keepContracts` is active, the emitted JS must include `require('@fultslop/axiom/contracts')`.
+
+---
+
+### 3. Background Context
+**Project Summary:** Axiom is a TS transformer that injects `@pre`, `@post`, and `@invariant` JSDoc tags as runtime guards. 
+* **Dev Builds:** Injects `ContractViolationError` logic.
+* **Release Builds:** Strips all contract code (zero-overhead).
+* **Key Mechanic:** Uses a `reparsed-index` to find JSDoc tags that `tsc` normally ignores.
+
+---
+
+### 4. Specific Test Scenarios to Validate
+Please specifically address these in your plan:
+1.  **Multiple Contracts:** `@pre` + `@post` on a single arrow function.
+2.  **Validation Failures:** What happens if an unknown identifier is used in a contract on an arrow function?
+3.  **Async Class Methods:** Ensure `@prev` captures state *before* the async body begins execution.
+4.  **Regression:** Verify that existing synchronous `@post` tests still pass.
+
+**Please provide your Todo list and any clarifying questions now.**
+```
+
